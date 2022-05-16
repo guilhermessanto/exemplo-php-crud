@@ -7,13 +7,14 @@
     <title>CRUD Vendas</title>
 </head>
 <body>
+
     <div class="container">
-        <h1>CRUD - Sistemoa Vendas</h1>
+        <h1>CRUD - Sistema Vendas</h1>
         <hr>
         <p>Operações de <b>inserção</b>, <b>leitura</b>, <b>atualização</b> e <b>exclusão</b> de dados.</p>
 
         <ul>
-            <li><a href="">Fabricantes</a></li>
+            <li><a href="fabricantes/listar.php">Fabricantes</a></li>
             <li><a href="">Produtos</a></li>
         </ul>
     </div>
