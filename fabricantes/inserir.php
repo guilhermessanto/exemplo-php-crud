@@ -27,5 +27,7 @@
             </p>
         </form>
     </div>
+    <p><a href="listar.php">Voltar para lista de fabricantes</a></p>
+    <p><a href="../index.php">home</a></p>     
 </body>
 </html>
