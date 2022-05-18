@@ -1,4 +1,5 @@
-<?php require_once "../src/funcoes-fabricantes.php";
+<?php 
+require_once "../src/funcoes-fabricantes.php";
 $listaDeFabricantes = lerFabricantes($conexao);
 ?>
 <!DOCTYPE html>
