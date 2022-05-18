@@ -22,7 +22,7 @@ function inserirFabricante(PDO $conexao, string $nome):void{
         $consulta = $conexao ->prepare($sql);
         // bindParam('nome do parametro',$variavel_com_valor, constante de verificação)
         $consulta->bindParam(':nome',$nome,PDO::PARAM_STR);
-        $consulta ->execute();
+        $consulta->execute();
     } catch (Exception $erro) {
         die("Erro: ".$erro->getMessage());
     }
