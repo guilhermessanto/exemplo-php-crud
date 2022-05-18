@@ -16,6 +16,7 @@ $fabricante = lerUmFabricante($conexao, $id);
         <h1>Fabricantes | SELECT/UPDATE</h1>
         <hr>
         <form action="" method="post">
+            <input type="hidden" name="<?=$fabricante['id']?>">
             <p>
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome" value="<?=$fabricante['nome']?>">
