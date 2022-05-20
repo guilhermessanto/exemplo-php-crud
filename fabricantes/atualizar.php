@@ -5,9 +5,12 @@ $fabricante = lerUmFabricante($conexao, $id);
 if(isset($_POST['atualizar'])){
     $nome = filter_input(INPUT_POST,'nome',FILTER_SANITIZE_SPECIAL_CHARS);
     atualizarFabricante($conexao, $id,$nome);
-    echo "<p>Fabrincante atualizado com sucesso!</p>";
-    header("refresh:3; url=listar.php");
-    //header("location:listar.php");
+    //msg + refresh
+    //echo "<p>Fabrincante atualizado com sucesso!</p>";
+    //header("refresh:3; url=listar.php");
+    //só o nome do parametro e valor
+    //header("location:listar.php?sucesso");
+    header("location:listar.php?status=sucesso");
 }
 ?>
 <!DOCTYPE html>

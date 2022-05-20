@@ -16,6 +16,11 @@ $listaDeFabricantes = lerFabricantes($conexao);
         <hr>
         <h2>Lendo e carregando todos os fabricantes</h2>
         <p><a href="inserir.php">Inserir um novo fabriante</a></p>
+
+    <?php if(isset($_GET['status']) && $_GET['status'] == 'sucesso'){?>
+        <p>Fabricantes atualizado com sucesso!</p>
+    <?php }?>
+
          <table>
              <caption>Lista de Fabricantes</caption>
              <thead>
@@ -30,8 +35,8 @@ $listaDeFabricantes = lerFabricantes($conexao);
     <tr>
     <td><?=$fabricante['id']?></td>    
     <td><?=$fabricante['nome']?></td>  
-    <td class="td"><a href="atualizar.php?id=<?=$fabricante['id']?>" style="color:blue;" class="btn btn-1">Atualizar</a></td>
-    <td class="td"><a href="" style="color:red;" class="btn btn-2">Excluir</a></td>
+    <td><a href="atualizar.php?id=<?=$fabricante['id']?>" style="color:blue;">Atualizar</a></td>
+    <td><a href="" style="color:red;">Excluir</a></td>
     </tr>  
 <?php }?>
              </tbody>
