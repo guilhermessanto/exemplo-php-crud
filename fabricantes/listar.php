@@ -37,11 +37,25 @@ $listaDeFabricantes = lerFabricantes($conexao);
     <td><?=$fabricante['id']?></td>    
     <td><?=$fabricante['nome']?></td>  
     <td><a href="atualizar.php?id=<?=$fabricante['id']?>" style="color:blue;">Atualizar</a></td>
-    <td><a href="excluir.php?id=<?=$fabricante['id']?>" style="color:red;">Excluir</a></td>
+    <td><a class="excluir" href="excluir.php?id=<?=$fabricante['id']?>" style="color:red;">Excluir</a></td>
+    <!-- onclic direto no html -->
+    <!-- <td><a onclick="return confirm('Deseja realmente excluir?')" class="exclusao" href="excluir.php?id=" style="color:red;">Excluir</a></td> -->
     </tr>  
 <?php }?>
-             </tbody>
-         </table>
-    </div>
+
+</tbody>
+</table>
+</div>
+<script>
+    let links = document.querySelectorAll('.excluir');
+    for(let i = 0; i < links.length; i++ ){
+        links[i].addEventListener("click", function(event){
+            event.preventDefault();
+            let resposta = confirm("Deseja realmente excluir?");
+            if(resposta){location.href = links[i].getAttribute('href');};
+        });
+    }
+
+</script>
 </body>
 </html>
