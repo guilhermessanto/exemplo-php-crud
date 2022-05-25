@@ -23,7 +23,6 @@ function dump($dados){
     var_dump($dados);
     echo "</pre>";
 }
-function formataMoeda($valor){
-    $resultado = "R$: ". number_format($valor,2, ',','.');
-    return $resultado;
+function formataMoeda(float $valor):string{
+    return "R$: ". number_format($valor,2, ',','.');   
 }
