@@ -2,7 +2,7 @@
 require_once "conecta.php";
 
 function lerProdutos(PDO $conexao):array{
-    $sql = "SELECT id, nome, descricao, preco, quantidade, fabricante_id FROM produtos ORDER BY nome";
+    $sql = "SELECT produtos.id, produtos.nome AS produto, produtos.descricao, produtos.preco, produtos.quantidade, produtos.fabricante_id, fabricantes.nome AS fabricante FROM produtos INNER JOIN fabricantes ON produtos.fabricante_id = fabricantes.id ORDER BY produtos.nome";
     try{
         $consulta = $conexao->prepare($sql);
         $consulta -> execute();
@@ -10,5 +10,20 @@ function lerProdutos(PDO $conexao):array{
     }catch(Exception $erro){
         die("Erro: ".$erro->getMessage());
     }
+    return $resultado;
+}
+
+
+
+
+
+// Funções utilitárias
+function dump($dados){
+    echo "<pre>";
+    var_dump($dados);
+    echo "</pre>";
+}
+function formataMoeda($valor){
+    $resultado = "R$: ". number_format($valor,2, ',','.');
     return $resultado;
 }

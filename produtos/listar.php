@@ -1,6 +1,9 @@
 <?php
 require_once "../src/funcoes-produtos.php";
+$listaDeProdutos = lerProdutos($conexao);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,13 +20,20 @@ require_once "../src/funcoes-produtos.php";
         <h2>Lendo e carregando todos os produtos</h2>
         <p><a href="inserir.php">Inserir um novo produto</a></p>
         <div class="podutos">
+           <?php foreach($listaDeProdutos as $produto){ ?>
             <article>
-                <h3>Nome do produto</h3>
-                <p>Preço</p>
-                <p>Quantidade</p>
-                <p>Descrição</p>
-                <p>Fabricante</p>
+                <h3><?=$produto['produto']?></h3>
+                <p>Preço: <?= formataMoeda($produto['preco'])?></p>
+                <p>Quantidade: <?=$produto['quantidade']?></p>
+                <p>Descrição: <?=$produto['descricao']?></p>
+                <p>Fabricante: <?=$produto['fabricante']?></p>
+                <p>
+                    <a href="atualizar.php?id=<?=$produto['id']?>" style="color:blue;">Atualizar</a> -
+                    <a class="excluir" href="excluir.php?id=<?=$produto['id']?>" style="color:red;">Excluir</a>
+                </p>
+                <hr>
             </article>
+           <?php }?>
         </div>
     </div>
 
