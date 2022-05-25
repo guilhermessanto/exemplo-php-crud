@@ -1,4 +1,6 @@
-
+<?php
+require_once "../src/funcoes-produtos.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,6 +16,15 @@
         <hr>
         <h2>Lendo e carregando todos os produtos</h2>
         <p><a href="inserir.php">Inserir um novo produto</a></p>
+        <div class="podutos">
+            <article>
+                <h3>Nome do produto</h3>
+                <p>Preço</p>
+                <p>Quantidade</p>
+                <p>Descrição</p>
+                <p>Fabricante</p>
+            </article>
+        </div>
     </div>
 
 </body>
