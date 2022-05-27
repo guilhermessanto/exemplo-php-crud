@@ -1,6 +1,14 @@
 <?php
 require_once "../src/funcoes-fabricantes.php";
+require_once "../src/funcoes-produtos.php";
 $listaDefabricantes = lerFabricantes ($conexao);
+
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$produto = lerUmProduto($conexao, $id);
+dump($produto);
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,20 +20,20 @@ $listaDefabricantes = lerFabricantes ($conexao);
 </head>
 <body>
     <div class="container">
-        <h1>Produtos | UPDATE</h1>
+        <h1>Produtos | SELECT | UPDATE</h1>
         <hr>
         <form action="" method="post">
             <p>
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" required>
+                <label for="nome" >Nome:</label>
+                <input type="text" name="nome" id="nome" required value="<?=$produto['nome']?>">
             </p>
             <p>
                 <label for="preco">Preço:</label>
-                <input type="number" name="preco" id="preco" min="0" max="10000" step="0.01" required>
+                <input type="number" name="preco" id="preco" min="0" max="10000" step="0.01" required value="<?=$produto['preco']?>">
             </p>
             <p>
                 <label for="quantidade">Quantidade:</label>
-                <input type="number" name="quantidade" id="quantidade" min="0" max="100" required>
+                <input type="number" name="quantidade" id="quantidade" min="0" max="100" required value="<?=$produto['quantidade']?>">
             </p>
             <p>
             <label for="fabricante_id">Fabricante:</label>
@@ -41,7 +49,7 @@ $listaDefabricantes = lerFabricantes ($conexao);
             </p>
             <p>
             <label for="descricao">Descrição:</label><br>
-            <textarea required name="descricao" id="descricao" cols="30" rows="3s"></textarea>
+            <textarea required name="descricao" id="descricao" cols="30" rows="3s" ><?=$produto['descricao']?></textarea>
             </p>
             <p>
                 <button type="submit" name="atualizar">Atualizar produtos</button>
