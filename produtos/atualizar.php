@@ -41,7 +41,7 @@ dump($produto);
                 <option value=""></option>
               <?php 
               foreach($listaDefabricantes as $fabricante){?>  
-                <option value="<?= $fabricante['id']?>">
+                <option selected value="<?= $fabricante['id']?>">
                     <?= $fabricante['nome']?>
                 </option>
                 <?php }?>
