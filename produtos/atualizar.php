@@ -1,18 +1,6 @@
 <?php
 require_once "../src/funcoes-fabricantes.php";
 $listaDefabricantes = lerFabricantes ($conexao);
-if(isset($_POST['inserir'])){
-    require_once "../src/funcoes-produtos.php";
-    $nome = filter_input(INPUT_POST,'nome', FILTER_SANITIZE_SPECIAL_CHARS);
-    $preco = filter_input(INPUT_POST,'preco', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-    $quantidade = filter_input(INPUT_POST,'quantidade', FILTER_SANITIZE_NUMBER_INT);
-    $descricao = filter_input(INPUT_POST,'descricao', FILTER_SANITIZE_SPECIAL_CHARS);
-    $fabricante_id = filter_input(INPUT_POST,'fabricante_id', FILTER_SANITIZE_NUMBER_INT);
-
-    inserirProduto($conexao, $nome, $preco, $quantidade, $descricao, $fabricante_id);
-
-    header("location:listar.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,11 +8,11 @@ if(isset($_POST['inserir'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Inserir</title>
+    <title>Produtos - atualizar</title>
 </head>
 <body>
     <div class="container">
-        <h1>Produtos | INSERT</h1>
+        <h1>Produtos | UPDATE</h1>
         <hr>
         <form action="" method="post">
             <p>
@@ -56,7 +44,7 @@ if(isset($_POST['inserir'])){
             <textarea required name="descricao" id="descricao" cols="30" rows="3s"></textarea>
             </p>
             <p>
-                <button type="submit" name="inserir">Inserir produtos</button>
+                <button type="submit" name="atualizar">Atualizar produtos</button>
             </p>
         </form>
     </div>
