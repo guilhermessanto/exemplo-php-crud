@@ -5,7 +5,7 @@ $listaDefabricantes = lerFabricantes ($conexao);
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $produto = lerUmProduto($conexao, $id);
-dump($produto);
+
 
 
 
@@ -38,10 +38,10 @@ dump($produto);
             <p>
             <label for="fabricante_id">Fabricante:</label>
             <select name="fabricante_id" id="fabricante_id" required > 
-                <option value=""></option>
+                
               <?php 
               foreach($listaDefabricantes as $fabricante){?>  
-                <option selected value="<?= $fabricante['id']?>">
+                <option  value="<?= $fabricante['id']?>" <?=($fabricante['id']== $produto['fabricante_id']) ?'selected':''; ?>>
                     <?= $fabricante['nome']?>
                 </option>
                 <?php }?>
