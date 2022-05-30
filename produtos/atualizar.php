@@ -45,7 +45,7 @@ if(isset($_POST['atualizar'])){
             <p>
             <label for="fabricante_id">Fabricante:</label>
             <select name="fabricante_id" id="fabricante_id" required > 
-                
+                <option value=""></option>
               <?php 
               foreach($listaDefabricantes as $fabricante){?>  
                 <option  value="<?= $fabricante['id']?>" <?=($fabricante['id']== $produto['fabricante_id']) ?'selected':''; ?>>
