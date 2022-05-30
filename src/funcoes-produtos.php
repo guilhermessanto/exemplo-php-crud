@@ -43,8 +43,8 @@ function lerUmProduto(PDO $conexao, int $id):array{
 }
 
 
-function atualizarProduto(PDO $conexao,int $id, string $nome, float $preco, int $quantidade, string $descricao):void{
-        $sql = "UPDATE produtos SET nome = :nome, preco = :preco, quantidade = :quantidade, descricao = :descricao  WHERE id = :id ";
+function atualizarProduto(PDO $conexao,int $id, string $nome, float $preco, int $quantidade, string $descricao, int $fabricante_id):void{
+        $sql = "UPDATE produtos SET nome = :nome, preco = :preco, quantidade = :quantidade, descricao = :descricao,fabricante_id = :fabricante_id  WHERE id = :id ";
         try{
         $consulta = $conexao->prepare($sql);
         $consulta->bindParam(':id',$id, PDO::PARAM_INT );
@@ -52,6 +52,7 @@ function atualizarProduto(PDO $conexao,int $id, string $nome, float $preco, int 
         $consulta->bindParam(':preco', $preco, PDO::PARAM_STR);
         $consulta->bindParam(':quantidade', $quantidade, PDO::PARAM_INT);
         $consulta->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+        $consulta->bindParam(':fabricante_id', $fabricante_id, PDO::PARAM_INT);
         $consulta->execute();
     }catch (Exception $erro) {
         die("Erro: ".$erro->getMessage());
