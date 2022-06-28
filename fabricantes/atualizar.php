@@ -2,17 +2,20 @@
 
 use CrudPoo\Fabricante;
 require_once '../vendor/autoload.php';
-$fabricate = new Fabricante;
+$fabricante = new Fabricante;
 
-$fabricate->getId(filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT));
-/* $id = filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT); */
-$fabricante ->lerUmFabricante();
+$fabricante->setId($_GET['id']);
+
+$umFabricante = $fabricante->lerUmFabricante();
+
 if(isset($_POST['atualizar'])){
     $fabricante->setNome($_POST['nome']);
     $fabricante->atualizarFabricante();
-    
+ 
     header("location:listar.php?status=sucesso");
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,10 +30,12 @@ if(isset($_POST['atualizar'])){
         <h1>Fabricantes | SELECT/UPDATE</h1>
         <hr>
         <form action="" method="post">
-            <input type="hidden" name="<?=$fabricante['id']?>">
+            
+            <input type="hidden" name="<?=$umFabricante['id']?>">
             <p>
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" value="<?=$fabricante['nome']?>">
+                
+                <input type="text" name="nome" id="nome" value="<?=$umFabricante['nome']?>">
             </p>
             <p>
                 <button type="submit" name="atualizar">Atualizar fabricante</button>

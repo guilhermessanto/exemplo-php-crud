@@ -24,6 +24,7 @@ final class Fabricante{
         }
         return $resultado;
     }
+    
     /* INSERIR FABRICANTE */
     public function inserirFabricante():void{
         $sql = "INSERT INTO fabricantes(nome)  VALUES (:nome)";
@@ -35,6 +36,7 @@ final class Fabricante{
             die("Erro: ".$erro->getMessage());
         }
     }
+
     /* LER UM FABRICANTE */
     public function lerUmFabricante():array{
         $sql = "SELECT id, nome FROM fabricantes WHERE id = :id";
@@ -48,6 +50,7 @@ final class Fabricante{
         }
         return $resultado;
     }
+    /* Atualizar Fabricante */
     public function atualizarFabricante():void{
         $sql = "UPDATE fabricantes SET nome = :nome WHERE id = :id";
         try {
@@ -58,6 +61,19 @@ final class Fabricante{
         } catch (Exception $erro) {
             die("Erro: ".$erro->getMessage());
         }
+    }
+    /* Excluir Fabricante */
+    
+    public function excluirFabricante():void{
+        $sql = "DELETE FROM fabricantes WHERE id = :id";
+        try {
+            $consulta = $this->conexao->prepare($sql);
+            $consulta -> bindParam(':id',$this->id,PDO::PARAM_INT);
+            $consulta->execute();
+        } catch (Exception $erro) {
+            die("Erro: ".$erro->getMessage());
+        }
+
     }
 
 
@@ -72,7 +88,7 @@ final class Fabricante{
 
    public function setId(int $id)
    {
-      $this->id = $id;
+      $this->id = filter_var($id,FILTER_SANITIZE_NUMBER_INT);
    }
 
    public function getNome(): string
