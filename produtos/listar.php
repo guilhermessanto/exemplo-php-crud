@@ -1,6 +1,11 @@
 <?php
-require_once "../src/funcoes-produtos.php";
-$listaDeProdutos = lerProdutos($conexao);
+
+use CrudPoo\Produto;
+
+require_once "../vendor/autoload.php";
+
+$produto = new Produto;
+$listaDeProdutos = $produto->lerProdutos();
 
 ?>
 
@@ -23,7 +28,7 @@ $listaDeProdutos = lerProdutos($conexao);
            <?php foreach($listaDeProdutos as $produto){ ?>
             <article>
                 <h3><?=$produto['produto']?></h3>
-                <p>Preço: <?=formataMoeda($produto['preco'])?></p>
+                <p>Preço: <?=$produto['preco']?></p>
                 <p>Quantidade: <?=$produto['quantidade']?></p>
                 <p>Descrição: <?=$produto['descricao']?></p>
                 <p>Fabricante: <?=$produto['fabricante']?></p>
