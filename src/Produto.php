@@ -42,7 +42,7 @@ final class Produto{
             die("Erro: ". $erro->getMessage());
         }
     }
-    function lerUmProduto():array{
+    public function lerUmProduto():array{
         $sql = "SELECT nome, preco, quantidade, descricao, fabricante_id FROM produtos WHERE id = :id";
         try {
             $consulta = $this->conexao->prepare($sql);
@@ -73,7 +73,7 @@ final class Produto{
     }
     
     
-    function excluirProduto():void{
+    public function excluirProduto():void{
         $sql = "DELETE FROM produtos WHERE id = :id";
         try {
             $consulta = $this->conexao->prepare($sql);
