@@ -103,7 +103,7 @@ final class Produto{
    
     public function setId(int $id)
     {
-        $this->id = $id;
+        $this->id = filter_var($id,FILTER_SANITIZE_NUMBER_INT);
     }
 
    
