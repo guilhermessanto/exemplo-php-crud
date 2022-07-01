@@ -1,11 +1,13 @@
 <?php
 
-use CrudPoo\Produto;
-
 require_once "../vendor/autoload.php";
+use CrudPoo\Produto;
+use utilitario\Utilitarios;
 
 $produto = new Produto;
+$utilitario = new Utilitarios;
 $listaDeProdutos = $produto->lerProdutos();
+
 
 ?>
 
@@ -25,10 +27,13 @@ $listaDeProdutos = $produto->lerProdutos();
         <h2>Lendo e carregando todos os produtos</h2>
         <p><a href="inserir.php">Inserir um novo produto</a></p>
         <div class="podutos">
-           <?php foreach($listaDeProdutos as $produto){ ?>
+           <?php foreach($listaDeProdutos as $produto){ 
+               $preco = $utilitario->setValor($produto['preco']);
+               $preco = $utilitario -> formataMoeda();
+            ?>
             <article>
                 <h3><?=$produto['produto']?></h3>
-                <p>Preço: <?=$produto['preco']?></p>
+                <p>Preço: <?=$preco?></p>
                 <p>Quantidade: <?=$produto['quantidade']?></p>
                 <p>Descrição: <?=$produto['descricao']?></p>
                 <p>Fabricante: <?=$produto['fabricante']?></p>
