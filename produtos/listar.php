@@ -34,6 +34,7 @@ $listaDeProdutos = $produto->lerProdutos();
             <article>
                 <h3><?=$produto['produto']?></h3>
                 <p>Preço: <?=$preco?></p>
+                <!-- <p>Preço: < ? =/* Utilitarios::formataMoeda($produto['preco']) */?></p> -->
                 <p>Quantidade: <?=$produto['quantidade']?></p>
                 <p>Descrição: <?=$produto['descricao']?></p>
                 <p>Fabricante: <?=$produto['fabricante']?></p>

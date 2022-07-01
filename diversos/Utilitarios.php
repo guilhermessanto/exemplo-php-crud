@@ -27,3 +27,15 @@ final class Utilitarios {
         $this->valor = $valor;
     }
 }
+
+/* abstract class Utilitarios {
+    public static function formataMoeda(float $valor):string{
+        return "R$: ". number_format($this->valor,2, ',','.');   
+    }
+
+    public static function dump(array $dados){
+    echo "<pre>";
+    var_dump($dados);
+    echo "</pre>";
+
+} */
