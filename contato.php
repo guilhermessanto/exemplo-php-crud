@@ -1,4 +1,54 @@
+<?php
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+if (isset($_POST['enviar']))
+{
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $assunto = $_POST['assunto'];
+    $mensagem = $_POST['mensagem'];
+
+
+//Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+    $mail->CharSet = "UTF-8";
+
+    try {
+        
+        $mail->isSMTP();
+        $mail->Host = 'smtp.mailtrap.io';
+        $mail->SMTPAuth = true;
+        $mail->Port = 2525;
+        $mail->Username = '2be7465b747200';
+        $mail->Password = 'b83591cd5da387';
+
+        //Recipients
+        $mail->setFrom('contato@sitecrud.com', 'Site Crud');
+        $mail->addAddress('guilherme@sitecrud.com', 'Guilherme');     //Add a recipient
+        $mail->addReplyTo($email, 'Retorno do contato');
+        
+
+        
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = "Contato site - ".$assunto;
+        $mail->Body    = "<b>Nome:</b> $nome <br> <b>E-mail:</b> $email <br> <b>Assunto: $assunto </b> <br> <b>Mensagem:'$mensagem'</b>";
+        $mail->AltBody = "Nome: $nome \n E-mail: $email \n Assunto: $assunto \n Mensagem: $mensagem";
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,9 +72,9 @@
             <label for="assunto">Assunto:</label>
             <select name="assunto" id="assunto" required>
                 <option value=""></option>
-                <option value="duvidas">Duvidas</option>
-                <option value="reclamacoes">Reclamações</option>
-                <option value="elogios">Elogios</option>
+                <option>Duvidas</option>
+                <option>Reclamações</option>
+                <option>Elogios</option>
             </select>
         </p>
         <p><label for="mensagem">Mensagem:</label></p>
