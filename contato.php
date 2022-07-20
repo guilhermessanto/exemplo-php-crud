@@ -9,17 +9,17 @@
 </head>
 <body>
         <h2>Contato usando phpmailer</h2><hr>
-        <form action="post">
+        <form action="" method="post">
         <p>
-            <label for="nome">Nome</label>
+            <label for="nome">Nome:</label>
             <input type="text" name="nome" id="nome" required>
         </p>
         <p>
-            <label for="email">email</label>
+            <label for="email">email:</label>
             <input type="text" name="email" id="email" required>
         </p>
         <p>
-            <label for="assunto">Assunto</label>
+            <label for="assunto">Assunto:</label>
             <select name="assunto" id="assunto" required>
                 <option value=""></option>
                 <option value="duvidas">Duvidas</option>
@@ -33,6 +33,7 @@
         </p>
         <button type="submit" name="enviar">Enviar</button>
         </form>
+        <p><a href="index.php">voltar</a></p>
 </body>
 </html>
 
